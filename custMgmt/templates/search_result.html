@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
+</head>
+<body>
+{% if search_query %}
+<h2>Below result found as per your search</h2>
+<table border="2">
+<thead>
+    <th>Id</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Mobile</th>
+    <th>Email</th>
+    </thead>
+    {% if searched_data %}
+    {% for data in searched_data %}
+    <tr>
+        <td>{{ cust.id }}</td>
+        <td>{{ cust.firstName }}</td>
+        <td>{{ cust.lastName }}</td>
+        <td>{{ cust.mobile }}</td>
+        <td>{{ cust.email }}</td>
+        <td>{{ cust.gender }}</td>
+    {% endfor %}
+    {% else %}
+    <h2>No search result found</h2>
+    {% endif %}
+</table>
+{% else %}
+<h2>Please enter a search query</h2>
+{% endif %}
+</body>
+</html>

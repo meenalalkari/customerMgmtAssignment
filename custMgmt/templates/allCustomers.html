@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<h1>Customers List</h1>
+<form action="{% url 'search-view' %}">
+<input type="search" name="search_query" placeholder="Search" required aria-label="Search">
+<button class="btn btn-outline-success" type="submit">Search</button><br><br>
+    </form>
+<table border="2">
+    <thead>
+    <th>Id</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Mobile</th>
+    <th>Email</th>
+    </thead>
+    {% for cust in customers %}
+    <tr>
+        <td>{{ cust.id }}</td>
+        <td>{{ cust.firstName }}</td>
+        <td>{{ cust.lastName }}</td>
+        <td>{{ cust.mobile }}</td>
+        <td>{{ cust.email }}</td>
+        <td>{{ cust.gender }}</td>
+        <td><a href="/delete/{{ cust.id }}">Delete</a></td>
+        <td><a href="/update/{{ cust.id }}">Update</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br><br><br>
+<a href="/addCustomer">Add Customer</a>
+</body>
+</html>
